@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Anton;
+  font-size: 20px;
+}
+.buttons{
+  padding-left: 230px;
+}
+
+.container {
+ display: flex;
+  align-items: center;
+height: 100%;
+width: 1450px;
+}
+
+.container .first_img {
+    height: 750px;
+    width: 10px;
+    margin: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.container .content {
+  position: absolute;
+  bottom: 150px;
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1;
+  width: 50%;
+  padding: 30px;
+}
+.container .first_img .content {
+  align: center;
+}

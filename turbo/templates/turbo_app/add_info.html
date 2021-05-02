@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>add data</title>
+</head>
+<body>
+	<h3 align="center">Enter Your Details {{res}}</h3>
+	<form action="save_person" method="POST">
+		{% csrf_token %}
+	<table align="center" border="1">
+	<tr>
+		<th>User Name</th>
+		<td><input type="text" name="user" value='enter your name'></td>
+	</tr>
+	<tr>
+		<th>Age</th>
+		<td><input type="text" name="age_ui" value='enter your Age'></td>
+	</tr>
+	<tr>
+		<th>Email ID</th>
+		<td><input type="text" name="mail_id" value='enter your Email ID'></td>
+	</tr>
+	<tr>
+	<td colspan="2" align="center"><input type="submit" value='ADD'></td>
+	</tr>
+</table>
+</form>
+</body>
+</html>

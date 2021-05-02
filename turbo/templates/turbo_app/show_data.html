@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>show data</title>
+</head>
+<body>
+	<h3 align="center">PERSON INFO</h3>
+	<table border="1" align="center">
+		<tr>
+			<th>user_name</th>
+			<th>age</th>
+			<th>email_id</th>
+		</tr>
+		{% for p in person_info %}
+		<tr>
+			<td>{{p.user_name}}</td>
+			<td>{{p.age}}</td>
+			<td>{{p.email_id}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<h4 align="center"><a href="add_info">ADD</a></h4>
+
+</body>
+</html>
