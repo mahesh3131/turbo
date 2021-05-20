@@ -1,0 +1,467 @@
+  {% extends "sample_app/profile.html" %}
+  {% block content %}
+{%load staticfiles%}
+<style>
+
+body.flat-black {
+    background: #E7E7E7
+}
+
+.flat-black .navbar.navbar-inverse {
+    background: #212121
+}
+
+.flat-black .navbar.navbar-inverse .navbar-form .form-control {
+    background: #4a4a4a;
+    border-color: #4a4a4a
+}
+
+.flat-black .sidebar,
+.flat-black .sidebar-bg {
+    background: #3A3A3A
+}
+
+.flat-black .page-with-light-sidebar .sidebar,
+.flat-black .page-with-light-sidebar .sidebar-bg {
+    background: #fff
+}
+
+.flat-black .sidebar .nav>li>a {
+    color: #b2b2b2
+}
+
+.flat-black .sidebar.sidebar-grid .nav>li>a {
+    border-bottom: 1px solid #474747;
+    border-top: 1px solid #474747
+}
+
+.flat-black .sidebar .active .sub-menu>li.active>a,
+.flat-black .sidebar .nav>li.active>a,
+.flat-black .sidebar .nav>li>a:focus,
+.flat-black .sidebar .nav>li>a:hover,
+.flat-black .sidebar .sub-menu>li>a:focus,
+.flat-black .sidebar .sub-menu>li>a:hover,
+.sidebar .nav>li.nav-profile>a {
+    color: #fff
+}
+
+.flat-black .sidebar .sub-menu>li>a,
+.flat-black .sidebar .sub-menu>li>a:before {
+    color: #999
+}
+
+.flat-black .page-with-light-sidebar .sidebar .active .sub-menu>li.active>a,
+.flat-black .page-with-light-sidebar .sidebar .active .sub-menu>li.active>a:focus,
+.flat-black .page-with-light-sidebar .sidebar .active .sub-menu>li.active>a:hover,
+.flat-black .page-with-light-sidebar .sidebar .nav>li.active>a,
+.flat-black .page-with-light-sidebar .sidebar .nav>li.active>a:focus,
+.flat-black .page-with-light-sidebar .sidebar .nav>li.active>a:hover {
+    color: #000
+}
+
+.flat-black .page-sidebar-minified .sidebar .nav>li.has-sub:focus>a,
+.flat-black .page-sidebar-minified .sidebar .nav>li.has-sub:hover>a {
+    background: #323232
+}
+
+.flat-black .page-sidebar-minified .sidebar .nav li.has-sub>.sub-menu,
+.flat-black .sidebar .nav>li.active>a,
+.flat-black .sidebar .nav>li.active>a:focus,
+.flat-black .sidebar .nav>li.active>a:hover,
+.flat-black .sidebar .nav>li.nav-profile,
+.flat-black .sidebar .sub-menu>li.has-sub>a:before,
+.flat-black .sidebar .sub-menu>li:before,
+.flat-black .sidebar .sub-menu>li>a:after {
+    background: #2A2A2A
+}
+
+.flat-black .page-sidebar-minified .sidebar .sub-menu>li:before,
+.flat-black .page-sidebar-minified .sidebar .sub-menu>li>a:after {
+    background: #3e3e3e
+}
+
+.flat-black .sidebar .nav>li.nav-profile .cover.with-shadow:before {
+    background: rgba(42, 42, 42, .75)
+}
+
+.bg-white {
+    background-color: #fff!important;
+}
+.p-10 {
+    padding: 10px!important;
+}
+.media.media-xs .media-object {
+    width: 32px;
+}
+.m-b-2 {
+    margin-bottom: 2px!important;
+}
+.media>.media-left, .media>.pull-left {
+    padding-right: 15px;
+}
+.media-body, .media-left, .media-right {
+    display: table-cell;
+    vertical-align: top;
+}
+select.form-control:not([size]):not([multiple]) {
+    height: 34px;
+}
+.form-control.input-inline {
+    display: inline;
+    width: auto;
+    padding: 0 7px;
+}
+
+
+.timeline {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative
+}
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    width: 5px;
+    background: #2d353c;
+    left: 20%;
+    margin-left: -2.5px
+}
+
+.timeline>li {
+    position: relative;
+    min-height: 50px;
+    padding: 20px 0
+}
+
+.timeline .timeline-time {
+    position: absolute;
+    left: 0;
+    width: 18%;
+    text-align: right;
+    top: 30px
+}
+
+.timeline .timeline-time .date,
+.timeline .timeline-time .time {
+    display: block;
+    font-weight: 600
+}
+
+.timeline .timeline-time .date {
+    line-height: 16px;
+    font-size: 12px
+}
+
+.timeline .timeline-time .time {
+    line-height: 24px;
+    font-size: 20px;
+    color: #242a30
+}
+
+.timeline .timeline-icon {
+    left: 15%;
+    position: absolute;
+    width: 10%;
+    text-align: center;
+    top: 40px
+}
+
+.timeline .timeline-icon a {
+    text-decoration: none;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 20px;
+    background: #d9e0e7;
+    line-height: 10px;
+    color: #fff;
+    font-size: 14px;
+    border: 5px solid #2d353c;
+    transition: border-color .2s linear
+}
+
+.timeline .timeline-body {
+    margin-left: 23%;
+    margin-right: 5%;
+    background: #fff;
+    position: relative;
+    padding: 20px 25px;
+    border-radius: 6px
+}
+
+.timeline .timeline-body:before {
+    content: '';
+    display: block;
+    position: absolute;
+    border: 10px solid transparent;
+    border-right-color: #fff;
+    left: -20px;
+    top: 20px
+}
+
+.timeline .timeline-body .timeline-button{
+    position: absolute;
+    right: 100px;
+    top: 15px;
+}
+
+.timeline .timeline-body .timeline-button_agree{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+
+.timeline .timeline-body>div+div {
+    margin-top: 15px
+}
+
+.timeline .timeline-body>div+div:last-child {
+    margin-bottom: -20px;
+    padding-bottom: 20px;
+    border-radius: 0 0 6px 6px
+}
+
+.timeline-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e7eb;
+    line-height: 30px
+}
+
+.timeline-header .userimage {
+    float: left;
+    width: 34px;
+    height: 34px;
+    border-radius: 40px;
+    overflow: hidden;
+    margin: -2px 10px -2px 0
+}
+
+.timeline-header .username {
+    font-size: 16px;
+    font-weight: 600
+}
+
+.timeline-header .username,
+.timeline-header .username a {
+    color: #2d353c
+}
+
+.timeline img {
+    max-width: 100%;
+    display: block
+}
+
+.timeline-content {
+    letter-spacing: .25px;
+    line-height: 18px;
+    font-size: 13px
+}
+
+.timeline-content:after,
+.timeline-content:before {
+    content: '';
+    display: table;
+    clear: both
+}
+
+.timeline-title {
+    margin-top: 0
+}
+
+.timeline-footer {
+    background: #fff;
+    border-top: 1px solid #e2e7ec;
+    padding-top: 15px
+}
+
+.timeline-footer a:not(.btn) {
+    color: #575d63
+}
+
+.timeline-footer a:not(.btn):focus,
+.timeline-footer a:not(.btn):hover {
+    color: #2d353c
+}
+
+.timeline-likes {
+    color: #6d767f;
+    font-weight: 600;
+    font-size: 12px
+}
+
+.timeline-likes .stats-right {
+    float: right
+}
+
+.timeline-likes .stats-total {
+    display: inline-block;
+    line-height: 20px
+}
+
+.timeline-likes .stats-icon {
+    float: left;
+    margin-right: 5px;
+    font-size: 9px
+}
+
+.timeline-likes .stats-icon+.stats-icon {
+    margin-left: -2px
+}
+
+.timeline-likes .stats-text {
+    line-height: 20px
+}
+
+.timeline-likes .stats-text+.stats-text {
+    margin-left: 15px
+}
+
+.timeline-comment-box {
+    background: #f2f3f4;
+    margin-left: -25px;
+    margin-right: -25px;
+    padding: 20px 25px
+}
+
+.timeline-comment-box .user {
+    float: left;
+    width: 34px;
+    height: 34px;
+    overflow: hidden;
+    border-radius: 30px
+}
+
+.timeline-comment-box .user img {
+    max-width: 100%;
+    max-height: 100%
+}
+
+.timeline-comment-box .user+.input {
+    margin-left: 44px
+}
+
+.lead {
+    margin-bottom: 20px;
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.text-danger, .text-red {
+    color: #ff5b57!important;
+}
+</style>
+
+<br><center>
+  
+</center>
+            <!-- begin profile-content -->
+            <div class="profile-content">
+               <!-- begin tab-content -->
+               <div class="tab-content p-0">
+                  <!-- begin #profile-post tab -->
+                  <div class="tab-pane fade active show" id="profile-post">
+
+                     <!-- begin timeline -->
+                     {% for i in trl_obj %}
+                      
+                     {% if i.deliv_form_id in list_bid_id and i.auction_status == 'agreed' or 'received' %}
+                     {% for j in trl_obj1 %}
+                     {% if j.deliv_form_id == i.deliv_form_id and j.username == request.user.username and j.bid_amount == i.min_bid_amnt %}
+                     
+                  
+                     
+                                                    <ul class="timeline">
+                                                    <li>
+                                                       <!-- begin timeline-time -->
+                                                       <div class="timeline-time">
+                                                          <span class="date">{{i.auct_day}} {{i.auct_month}} {{i.auct_year}}</span>
+                                                          <span class="time">{{i.auct_time}}</span>
+                                                       </div>
+                                                       <!-- end timeline-time -->
+                                                       <!-- begin timeline-icon -->
+                                                       <div class="timeline-icon">
+                                                          <a href="javascript:;">&nbsp;</a>
+                                                       </div>
+                                                       <!-- end timeline-icon -->
+                                                       <!-- begin timeline-body -->
+                                                       <div class="timeline-body">
+                                                          <div class="timeline-header">
+                                                             <span class="userimage"><img <img src="{%static "images/profile.png"%}" alt="no image"></span>
+                                                             <span class="username">{{i.username}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                             <span class="username">form id: {{i.deliv_form_id}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                             <span class="username">Bid Amount: {{j.bid_amount}}</span>
+                                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                             <span class="username">Auction Status: {{i.auction_status}}</span>
+
+                                                            
+                                                             {% if i.auction_status != 'received' and i.auction_status != 'closed' and i.auction_status != 'disagreed' %}
+                                                                 <div class="timeline-button">
+                                                                  <form method="post" action = "add_status_received">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" type="submit" type="submit" name="U_id" value= {{i.deliv_form_id}} class="form-control rounded-corner" placeholder="Enter Your Bid.....">
+                                                            <input type="hidden" type="submit" type="submit" name="V_id" value= "received" class="form-control rounded-corner" placeholder="Enter Your Bid.....">
+
+                                                            <span class="input-group-btn p-l-10">
+                                                            <button class="btn btn-primary f-s-12 rounded-corner" type="submit">received</button>
+                                                            </form>                    
+                                                            </div>
+                                                            {% endif %}
+                                                            <!-- button end -->
+                                                             <!--<span class="pull-right text-muted">1,282 Views</span>-->
+                                                          </div>
+                                                          <div class="timeline-content">
+                                                             <h4 class="template-title">FROM:- 
+                                                                <i class="fa fa-map-marker text-danger fa-fw"></i>
+                                                                {{i.sen_city}}, {{i.sen_district}} dist, {{i.sen_state}}, {{i.sen_pincode}}
+                                                             </h4>
+                                                             <h4 class="template-title">TO:- 
+                                                                <i class="fa fa-map-marker text-danger fa-fw"></i>
+                                                                {{i.rec_city}}, {{i.rec_district}} dist, {{i.rec_state}}, {{i.rec_pincode}}
+                                                             </h4>
+                                                             <p class="lead">
+                                                                <i class="fa fa-quote-left fa-fw pull-left"></i>
+                                                                {{i.about_product}}
+                                                                <i class="fa fa-quote-right fa-fw pull-right"></i>
+                                                             </p>
+                                                          </div>
+                                                          <div class="timeline-footer">
+                                                             <b>product waight:- {{i.pro_waight}}     </b>
+                                                             <b> &nbsp;Pickup Time:- {{i.pickup_time}}</b> 
+                                                             <b> &nbsp;Auction Time:- {{i.auction_time}}</b>
+                                                          </div>
+
+                                                       </div>
+                                                       
+                                                
+                                                       <!-- end timeline-body -->
+                                                    
+                                                 <!-- end timeline -->
+
+                                              </div>
+                           {% endif %}
+                          
+                           {% endfor %}
+                           {% endif %}
+                          
+                           {% endfor %}
+                           
+                           <!-- end timeline-body -->
+                        
+                     <!-- end timeline -->
+                  </div>
+                  <!-- end #profile-post tab -->
+               </div>
+               <!-- end tab-content -->
+            </div>
+            <!-- end profile-content -->
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock %}
